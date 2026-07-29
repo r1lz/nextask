@@ -1,5 +1,9 @@
 # Task Management REST API
 
+[English](#english) | [Bahasa Indonesia](#bahasa-indonesia)
+
+<a id="english"></a>
+
 ![NexTask Banner](art/nextask-readme-banner.png)
 ![Laravel](https://img.shields.io/badge/Laravel-13.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
 ![PHP](https://img.shields.io/badge/PHP-8.3+-777BB4?style=for-the-badge&logo=php&logoColor=white)
@@ -140,3 +144,141 @@ If you intentionally want to make the documentation public in production (e.g., 
 
 ---
 *Created as a portfolio project demonstrating backend engineering skills.*
+
+---
+<a id="bahasa-indonesia"></a>
+# 🇮🇩 BAHASA INDONESIA
+
+API REST yang profesional dan berfitur lengkap untuk sistem Manajemen Tugas (Task Management) yang dibangun dengan Laravel 13. Proyek ini mendemonstrasikan arsitektur yang bersih, autentikasi yang kuat, relasi database, dan praktik terbaik API.
+
+## 🌟 Fitur Utama
+
+*   **Autentikasi**: Autentikasi berbasis token yang aman menggunakan **Laravel Sanctum**.
+*   **Manajemen Proyek**: Pengguna dapat membuat, melihat, memperbarui, dan menghapus proyek mereka sendiri.
+*   **Manajemen Tugas**: CRUD penuh untuk tugas di dalam proyek, termasuk status, prioritas, tenggat waktu, dan penerima tugas (assignee).
+*   **Sistem Label**: Mengkategorikan tugas menggunakan label warna kustom (Relasi Many-to-Many).
+*   **Otorisasi**: Policies dan Gates yang ketat memastikan pengguna hanya dapat mengakses dan memodifikasi data mereka sendiri.
+*   **API Resources**: Struktur respons JSON yang konsisten menggunakan Eloquent API Resources dan paginasi.
+*   **Automated Testing**: Feature tests menggunakan PHPUnit untuk menjamin keandalan endpoint.
+*   **Soft Deletes**: Penghapusan data yang aman tanpa kehilangan riwayat data.
+*   **Database Seeding**: Factories dan seeders yang siap pakai untuk pengembangan lokal yang cepat.
+
+## 🚀 Memulai
+
+### Prasyarat
+
+*   PHP >= 8.3
+*   Composer
+*   SQLite (atau MySQL)
+
+### Instalasi
+
+1.  **Clone repositori**
+    ```bash
+    git clone https://github.com/r1lz/nextask.git
+    cd nextask
+    ```
+
+2.  **Install dependensi**
+    ```bash
+    composer install
+    ```
+
+3.  **Pengaturan Environment**
+    ```bash
+    cp .env.example .env
+    php artisan key:generate
+    ```
+    *Catatan: Secara default menggunakan SQLite. Jika Anda lebih suka MySQL, perbarui `DB_CONNECTION` di `.env` Anda.*
+
+4.  **Database Migration & Seeding**
+    ```bash
+    touch database/database.sqlite
+    php artisan migrate --seed
+    ```
+
+5.  **Jalankan server lokal**
+    ```bash
+    php artisan serve
+    ```
+
+## 📚 Dokumentasi Endpoint API
+
+Kami menggunakan **Scramble** untuk secara otomatis menghasilkan dokumentasi OpenAPI interaktif.
+
+Setelah server berjalan, cukup kunjungi:
+👉 **[http://localhost:8000/docs/api](http://localhost:8000/docs/api)**
+
+Di sana Anda dapat melihat semua endpoint, membaca penjelasan, dan bahkan mengklik **"Try it out"** untuk menguji API langsung dari browser Anda tanpa memerlukan Postman!
+
+*(Di bawah ini adalah tabel referensi cepat. Lihat dokumentasi interaktif untuk detail lengkap).*
+
+### 🔐 Autentikasi
+
+| Method | Endpoint | Deskripsi | Butuh Auth |
+| :--- | :--- | :--- | :---: |
+| `POST` | `/auth/register` | Mendaftarkan akun pengguna baru | ❌ |
+| `POST` | `/auth/login` | Autentikasi dan dapatkan token | ❌ |
+| `POST` | `/auth/logout` | Mencabut token akses saat ini | ✅ |
+| `GET` | `/auth/me` | Mengambil profil pengguna terautentikasi (Cek Status Login) | ✅ |
+
+### 🛠️ Alat Pengujian (Hanya Lokal)
+
+| Method | Endpoint | Deskripsi | Butuh Auth |
+| :--- | :--- | :--- | :---: |
+| `POST` | `/testing/reset-database` | Hapus database dan re-seed (Aktif hanya saat APP_ENV=local) | ❌ |
+
+### 📁 Proyek
+
+| Method | Endpoint | Deskripsi | Butuh Auth |
+| :--- | :--- | :--- | :---: |
+| `GET` | `/projects` | Dapatkan daftar proyek pengguna dengan paginasi | ✅ |
+| `POST` | `/projects` | Buat proyek baru | ✅ |
+| `GET` | `/projects/{id}` | Dapatkan detail proyek spesifik | ✅ |
+| `PUT` | `/projects/{id}` | Perbarui proyek | ✅ |
+| `DELETE` | `/projects/{id}` | Hapus proyek | ✅ |
+
+### ✅ Tugas (Di dalam Proyek)
+
+| Method | Endpoint | Deskripsi | Butuh Auth |
+| :--- | :--- | :--- | :---: |
+| `GET` | `/projects/{id}/tasks` | Dapatkan daftar tugas di dalam proyek dengan paginasi | ✅ |
+| `POST` | `/projects/{id}/tasks` | Buat tugas baru di dalam proyek | ✅ |
+| `GET` | `/tasks/{id}` | Dapatkan detail tugas spesifik | ✅ |
+| `PUT` | `/tasks/{id}` | Perbarui tugas (status, assignee, dll) | ✅ |
+| `DELETE` | `/tasks/{id}` | Hapus tugas | ✅ |
+
+### 🏷️ Label
+
+| Method | Endpoint | Deskripsi | Butuh Auth |
+| :--- | :--- | :--- | :---: |
+| `GET` | `/labels` | Daftarkan label kustom pengguna | ✅ |
+| `POST` | `/labels` | Buat label baru | ✅ |
+| `DELETE` | `/labels/{id}` | Hapus label | ✅ |
+
+---
+
+## 🧪 Pengujian
+
+Jalankan serangkaian pengujian menggunakan PHPUnit untuk memverifikasi fungsionalitas:
+
+```bash
+php artisan test
+```
+
+## ⚠️ Catatan Penting untuk Deployment Produksi
+
+Secara default, **Dokumentasi API Scramble (`/docs/api`) dinonaktifkan sepenuhnya di production** untuk melindungi definisi API Anda.
+Jika Anda men-deploy proyek ini ke server dan mengatur `APP_ENV=production` di file `.env` Anda, siapa pun yang mencoba mengakses `/docs/api` akan menerima error `403 Forbidden`.
+
+Jika Anda sengaja ingin membuat dokumentasi tersebut menjadi publik di production (misalnya, untuk portofolio), Anda harus memperbarui definisi `Gate` di dalam `app/Providers/AppServiceProvider.php` (atau di mana pun Anda mendefinisikan logika otorisasi untuk Scramble) dengan mengizinkannya secara eksplisit. Cek [dokumentasi resmi Scramble](https://scramble.dedoc.co/usage/access) untuk mengetahui cara mendefinisikan gate `viewApiDocs`.
+
+---
+## 🛠️ Dibangun Dengan
+
+*   [Laravel 13](https://laravel.com/) - Kerangka Kerja PHP untuk Web Artisans
+*   [Laravel Sanctum](https://laravel.com/docs/sanctum) - Autentikasi yang ringan
+*   [PHPUnit](https://phpunit.de/) - Framework pengujian berorientasi programmer
+
+---
+*Dibuat sebagai proyek portofolio yang mendemonstrasikan keahlian backend engineering.*
