@@ -1,4 +1,4 @@
-# Task Management REST API
+# NexTask - Task Management REST API
 
 [English](#english) | [Bahasa Indonesia](#bahasa-indonesia)
 
