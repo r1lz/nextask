@@ -142,6 +142,9 @@ If you intentionally want to make the documentation public in production (e.g., 
 *   [Laravel Sanctum](https://laravel.com/docs/sanctum) - Featherweight authentication
 *   [PHPUnit](https://phpunit.de/) - Programmer-oriented testing framework
 
+## 📄 License
+
+This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
 ---
 <a id="bahasa-indonesia"></a>
@@ -278,4 +281,7 @@ Jika Anda sengaja ingin membuat dokumentasi tersebut menjadi publik di productio
 *   [Laravel Sanctum](https://laravel.com/docs/sanctum) - Autentikasi yang ringan
 *   [PHPUnit](https://phpunit.de/) - Framework pengujian berorientasi programmer
 
+## 📄 Lisensi
+
+Proyek ini adalah perangkat lunak sumber terbuka (open-source) yang dilisensikan di bawah [Lisensi MIT](https://opensource.org/licenses/MIT).
 
