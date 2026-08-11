@@ -142,8 +142,6 @@ If you intentionally want to make the documentation public in production (e.g., 
 *   [Laravel Sanctum](https://laravel.com/docs/sanctum) - Featherweight authentication
 *   [PHPUnit](https://phpunit.de/) - Programmer-oriented testing framework
 
----
-*Created as a portfolio project demonstrating backend engineering skills.*
 
 ---
 <a id="bahasa-indonesia"></a>
@@ -280,5 +278,4 @@ Jika Anda sengaja ingin membuat dokumentasi tersebut menjadi publik di productio
 *   [Laravel Sanctum](https://laravel.com/docs/sanctum) - Autentikasi yang ringan
 *   [PHPUnit](https://phpunit.de/) - Framework pengujian berorientasi programmer
 
----
-*Dibuat sebagai proyek portofolio yang mendemonstrasikan keahlian backend engineering.*
+
